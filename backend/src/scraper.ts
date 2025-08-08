@@ -1,0 +1,68 @@
+import axios from 'axios'
+import { JSDOM } from 'jsdom'
+
+import { getRamdomUserAgent, selectors } from './utils'
+
+// Function to fetch results from Amazon based on the search keyword
+export async function scrapeAmazonSearch(keyword: any, retryCount = 0) {
+    try {
+        // Delay increasing exponentially with the number of retries
+        await new Promise(f => setTimeout(f, 5000 * Math.pow(2, retryCount)));
+
+        const url = `https://www.amazon.com/s?k=${encodeURIComponent(keyword)}`;
+
+        const userAgent = getRamdomUserAgent();
+
+        // Fetch the HTML content of the page
+        const response = await axios.get(url, {
+            headers: { 'User-Agent': userAgent}
+        });
+
+        // Parse the HTML content using JSDOM
+        const dom = new JSDOM(response.data);
+        const document = dom.window.document;
+
+        // Select all product items from the search results
+        const productItems = document.querySelectorAll(selectors.items);
+        let products: any[] = [];
+
+        // Extract details for each product
+        productItems.forEach(item => {
+
+            const title = item.querySelector(selectors.title)?.textContent?.trim() || null;
+
+            // Locate and parse the product rating
+            const ratingText = item.querySelector(selectors.rating)?.textContent?.trim() || null;
+            const ratingMatch = ratingText?.match(/[0-9.]+/); // Get the numeric part of the rating
+            // Convert the rating to a float, or null if not found
+            const rating = ratingMatch ? parseFloat(ratingMatch[0]) : null;
+
+            const numReviews = item.querySelector(selectors.reviews)?.textContent?.trim() || null;
+
+            const imageUrl = (item.querySelector(selectors.image) as HTMLImageElement)?.src || null;
+
+            // Only add the product if all necessary details are present
+            if (title && rating && numReviews && imageUrl) {
+                products.push({
+                    title,
+                    rating,
+                    numReviews,
+                    imageUrl
+                });
+            };
+        });
+
+        // Return the list of products found
+        return products;
+    } catch (error) {
+        // Handle errors and attempt retries up to a maximum of 3 retries
+        console.error(`Retry ${retryCount + 1}: Error fetching data: ${error}`);
+        if (retryCount < 3) {
+            console.log(`Retry ${retryCount + 1}: Retrying after error`);
+            return scrapeAmazonSearch(keyword, retryCount + 1);
+        } else {
+            console.error('Max retries reached, throwing error');
+            throw error;
+        }
+    }
+}
