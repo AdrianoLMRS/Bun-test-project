@@ -2,9 +2,10 @@ import axios from 'axios'
 import { JSDOM } from 'jsdom'
 
 import { getRamdomUserAgent, selectors } from './utils'
+import type { ProductType } from './types';
 
 // Function to fetch results from Amazon based on the search keyword
-export async function scrapeAmazonSearch(keyword: any, retryCount = 0) {
+export async function scrapeAmazonSearch(keyword: string, retryCount = 0) {
     try {
         // Delay increasing exponentially with the number of retries
         await new Promise(f => setTimeout(f, 5000 * Math.pow(2, retryCount)));
@@ -24,7 +25,7 @@ export async function scrapeAmazonSearch(keyword: any, retryCount = 0) {
 
         // Select all product items from the search results
         const productItems = document.querySelectorAll(selectors.items);
-        let products: any[] = [];
+        let products: ProductType[] = [];
 
         // Extract details for each product
         productItems.forEach(item => {
