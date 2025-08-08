@@ -5,7 +5,7 @@ import { getRamdomUserAgent, selectors } from './utils'
 import type { ProductType } from './types';
 
 // Function to fetch results from Amazon based on the search keyword
-export async function scrapeAmazonSearch(keyword: string, retryCount = 0) {
+export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryCount = 0) {
     try {
         // Delay increasing exponentially with the number of retries
         await new Promise(f => setTimeout(f, 5000 * Math.pow(2, retryCount)));
@@ -16,7 +16,7 @@ export async function scrapeAmazonSearch(keyword: string, retryCount = 0) {
 
         // Fetch the HTML content of the page
         const response = await axios.get(url, {
-            headers: { 'User-Agent': userAgent}
+            headers: { 'User-Agent': userAgent }
         });
 
         // Parse the HTML content using JSDOM
@@ -44,26 +44,20 @@ export async function scrapeAmazonSearch(keyword: string, retryCount = 0) {
 
             // Only add the product if all necessary details are present
             if (title && rating && numReviews && imageUrl) {
-                products.push({
-                    title,
-                    rating,
-                    numReviews,
-                    imageUrl
-                });
+                products.push({ title, rating, numReviews, imageUrl });
             };
         });
 
         // Return the list of products found
         return products;
     } catch (error) {
-        // Handle errors and attempt retries up to a maximum of 3 retries
+        // Handle errors and attempt retries up to a maximum (maxRetries)
         console.error(`Retry ${retryCount + 1}: Error fetching data: ${error}`);
-        if (retryCount < 3) {
+        if (retryCount < maxRetries) {
             console.log(`Retry ${retryCount + 1}: Retrying after error`);
             return scrapeAmazonSearch(keyword, retryCount + 1);
         } else {
-            console.error('Max retries reached, throwing error');
-            throw error;
+            throw new Error(`Max retries reached ${maxRetries}. Failed to fetch data for keyword: ${keyword}`);
         }
     }
 }
