@@ -48,6 +48,8 @@ export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryC
             };
         });
 
+        console.log(`Found ${products.length} products for keyword: ${keyword}`);
+
         // Return the list of products found
         return products;
     } catch (error) {
@@ -55,7 +57,7 @@ export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryC
         console.error(`Retry ${retryCount + 1}: Error fetching data: ${error}`);
         if (retryCount < maxRetries) {
             console.log(`Retry ${retryCount + 1}: Retrying after error`);
-            return scrapeAmazonSearch(keyword, retryCount + 1);
+            return scrapeAmazonSearch(keyword, retryCount + 1); // Retry with incremented count
         } else {
             throw new Error(`Max retries reached ${maxRetries}. Failed to fetch data for keyword: ${keyword}`);
         }
