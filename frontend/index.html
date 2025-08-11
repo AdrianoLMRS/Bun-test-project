@@ -4,10 +4,22 @@
         <meta charset="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/vite.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Vite App</title>
+        <title>Amazon Search Scraper</title>
     </head>
     <body>
-        <div id="app"></div>
-        <script type="module" src="/src/main.js"></script>
+        <header>
+            <h1>Amazon Scraper</h1>
+        </header>
+        <hr>
+        <section aria-labbelledby="form-section-header">
+            <h2 id="form-section-header">Search for a keyword to begin to scrape!</h2>
+            <form id="scrape-amazon-form" action="http://localhost:%VITE_PORT%/api/scrape" method="get" target="resultsFrame">
+                <input name="keyword" type="text" placeholder="Keyword"
+                    required autofocus autocomplete="on" />
+                <button name="search-button" form="scrape-amazon-form"
+                    type="submit">Search</button>
+            </form>
+        </section>
     </body>
+    <script type="module" src="./src/main.js" defer></script>
 </html>
