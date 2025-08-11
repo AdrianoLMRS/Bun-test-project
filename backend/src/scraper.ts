@@ -7,8 +7,10 @@ import type { ProductType } from './types';
 // Function to fetch results from Amazon based on the search keyword
 export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryCount = 0) {
     try {
-        // Delay increasing exponentially with the number of retries
-        await new Promise(f => setTimeout(f, 5000 * Math.pow(2, retryCount)));
+        if (retryCount > 0) {
+            // Delay increasing exponentially with the number of retries
+            await new Promise(f => setTimeout(f, 5000 * Math.pow(2, retryCount)));
+        }
 
         const url = `https://www.amazon.com/s?k=${encodeURIComponent(keyword)}`;
 
@@ -56,8 +58,8 @@ export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryC
         // Handle errors and attempt retries up to a maximum (maxRetries)
         console.error(`Retry ${retryCount + 1}: Error fetching data: ${error}`);
         if (retryCount < maxRetries) {
-            console.log(`Retry ${retryCount + 1}: Retrying after error`);
-            return scrapeAmazonSearch(keyword, retryCount + 1); // Retry with incremented count
+            console.log('Retrying after error');
+            return scrapeAmazonSearch(keyword, maxRetries, retryCount + 1); // Retry with incremented count
         } else {
             throw new Error(`Max retries reached ${maxRetries}. Failed to fetch data for keyword: ${keyword}`);
         }
