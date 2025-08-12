@@ -1,11 +1,33 @@
 import axios from 'axios'
 import { JSDOM } from 'jsdom'
 
-import { getRamdomUserAgent, selectors } from './utils'
+import { getRamdomUserAgent, selectors, getIP } from './utils'
+import { getProxyList } from './proxy/utils'
 import type { ProductType } from './types';
 
 // Function to fetch results from Amazon based on the search keyword
 export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryCount = 0) {
+    // Validate the keyword
+    if (!keyword || typeof keyword !== 'string' || keyword.trim() === '') {
+        throw new Error('Invalid keyword provided');
+    }
+
+    // Fetch a list of proxies (optional, can be used for rotating requests)
+    const proxyList = await getProxyList();
+    // Get a random proxy from the list
+    const proxyUrl = proxyList[Math.floor(Math.random() * proxyList.length)];
+
+    let proxyHost = '';
+    let proxyPort = 0;
+    
+    if (proxyUrl) {
+        const [ip, portStr] = proxyUrl.split(':');
+        proxyHost = String(ip);
+        proxyPort = Number(portStr);
+    }
+
+    console.log(`Proxy port: ${proxyPort} | Proxy host: ${proxyHost}\nIp used: ${await getIP(proxyHost, proxyPort)}`);
+
     try {
         if (retryCount > 0) {
             // Delay increasing exponentially with the number of retries
@@ -18,7 +40,16 @@ export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryC
 
         // Fetch the HTML content of the page
         const response = await axios.get(url, {
-            headers: { 'User-Agent': userAgent }
+            headers: {
+                'User-Agent': userAgent,
+                'referer': 'https://google.com',
+            },
+            proxy: {
+                protocol: 'http',
+                host: proxyHost,
+                port: proxyPort,
+            },
+            timeout: 15000 * (retryCount + 1), // Increase timeout with each retry
         });
 
         // Parse the HTML content using JSDOM

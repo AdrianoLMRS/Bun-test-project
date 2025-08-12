@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // Array of User-Agents for rotation to mimic different browsers and avoid detection
 export const userAgents = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36',
@@ -20,3 +22,20 @@ export const selectors = {
     reviews: '.a-size-small .a-size-base',
     image: '.s-image'
 } as const;
+
+export async function getIP(host: string, port: number) {
+    try {
+        const res = await axios.get('https://api.ipify.org?format=json', {
+            proxy: {
+                host,
+                port,
+                protocol: 'http'
+            },
+            timeout: 8000
+        });
+        return res.data.ip;
+    } catch (err) {
+        console.error('Error fetching IP:', err);
+        return null;
+    }
+}
