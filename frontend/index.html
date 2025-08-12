@@ -9,6 +9,7 @@
     <body>
         <header>
             <h1>Amazon Scraper</h1>
+            <p id="results-summary" aria-live="polite"></p>
         </header>
         <hr>
         <section aria-labbelledby="form-section-header">
@@ -19,6 +20,12 @@
                 <button name="search-button" form="scrape-amazon-form"
                     type="submit">Search</button>
             </form>
+        </section>
+        <section aria-labelledby="results-header" id="results">
+            <h2 id="results-header">Results</h2>
+            <div id="results-container" aria-live="polite">
+                <p id="results">No results yet. Please enter a keyword and click "Search".</p>
+            </div>
         </section>
     </body>
     <script type="module" src="./src/main.js" defer></script>
