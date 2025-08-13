@@ -34,19 +34,66 @@ function renderResults(results) {
     resultsContainer.appendChild(ol);
 
     results.forEach((item, index) => {
+        const li = document.createElement('li');
+        
         const article = document.createElement('article');
-        article.setAttribute('aria-label', `Result-Item-${index}`);
-        article.innerHTML = `
-            <header>
-                <h3>${item.title}</h3>
-            </header>
-            <img src="${item.imageUrl}" alt="${item.title}" loading="lazy" />
-            <section aria-label="user-reviews-header">
-                <h4>User Reviews</h4>
-                <span class="rating">${item.rating} stars</span>
-                <span class="review-count">${item.numReviews} reviews</span>
-            </section>
-        `;
-        ol.appendChild(article);
+        // Seo & accessibility attributes
+        article.setAttribute('itemscope', '');
+        article.setAttribute('itemtype', 'http://schema.org/Product');
+        article.setAttribute('aria-label', `Result Item ${index + 1}: ${item.title}`);
+
+        // Create header with item title
+        const header = document.createElement('header');
+        const h3 = document.createElement('h3');
+
+        h3.setAttribute('itemprop', 'name');
+        h3.textContent = item.title;
+
+        header.appendChild(h3);
+        article.appendChild(header);
+
+        // Image
+        const img = document.createElement('img');
+        img.src = item.imageUrl;
+        img.alt = item.title;
+        img.loading = 'lazy';
+
+        img.setAttribute('itemprop', 'image');
+
+        article.appendChild(img);
+
+        // User reviews section
+        const section = document.createElement('section');
+        const reviewsId = `user-reviews-header-${index}`; // Unique ID
+        section.setAttribute('aria-labelledby', reviewsId);
+
+        const h4 = document.createElement('h4');
+        h4.id = reviewsId;
+        h4.textContent = 'User Reviews';
+        section.appendChild(h4);
+
+        // Rating </span> element
+        const rating = document.createElement('span');
+        rating.className = 'rating';
+        // SEO
+        rating.setAttribute('itemprop', 'aggregateRating');
+        rating.setAttribute('itemscope', '');
+        rating.setAttribute('itemtype', 'http://schema.org/AggregateRating');
+
+        rating.textContent = `${item.rating} stars`;
+
+        // Review </span> element
+        const reviewCount = document.createElement('span');
+        reviewCount.className = 'review-count';
+        reviewCount.textContent = `${item.numReviews} reviews`;
+        reviewCount.setAttribute('itemprop', 'reviewCount');
+
+        // Append elements to the user reviews section
+        section.appendChild(rating);
+        section.appendChild(reviewCount);
+        article.appendChild(section); // Append section to article
+
+        li.appendChild(article);
+        ol.appendChild(li);
     });
 }
