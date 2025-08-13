@@ -1,0 +1,43 @@
+/*
+    Standalone CSS for a star rating input control.
+    See: https://css-tricks.com/a-css-only-star-rating-component-and-more-part-1
+*/
+
+input[type="range"].star {
+  --s: 100px; /* control the size*/
+  
+  --_c: #7b7b7b 50%,#fff220 0;
+  height: var(--s);
+  aspect-ratio: attr(max type(<integer>));
+  padding-inline: calc(var(--s)/2);
+  box-sizing: border-box;
+  mask: 
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5 L79 95 L2 40 L98 40 L21 95 Z'/></svg>") 0/var(--s) var(--_m,);
+  appearance: none;
+  cursor: pointer;
+}
+input[type="range" i]::-webkit-slider-thumb{
+  width: 1px;
+  border-image: 
+    conic-gradient(at calc(50% + var(--s)/2),var(--_c))
+    fill 0//var(--s) calc(20*var(--s));
+  appearance: none;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 1px;
+  border-image: 
+    conic-gradient(at calc(50% + var(--s)/2),var(--_c))
+    fill 0//var(--s) calc(20*var(--s));
+  appearance: none;
+}
+input[type="range"]:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: -2px;
+  --_m:,conic-gradient(from 90deg at 2px 2px,#0000 25%,#000 0) 0 0/calc(100% - 2px) calc(100% - 2px);
+}
+
+@supports not (d:attr(d type(*))) {
+  input[type="range"] {
+    aspect-ratio: 5; /* max */
+  }
+}

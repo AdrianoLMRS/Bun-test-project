@@ -7,7 +7,7 @@ form.addEventListener('submit', (event) => {
     const actionUrl = form.getAttribute('action');
 
     // Send the request using fetch
-    fetch(`${actionUrl}?keyword=${keyword}`)
+    fetch(`${actionUrl}?keyword=${encodeURIComponent(keyword)}`)
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
@@ -72,20 +72,28 @@ function renderResults(results) {
         h4.textContent = 'User Reviews';
         section.appendChild(h4);
 
-        // Rating </span> element
-        const rating = document.createElement('span');
-        rating.className = 'rating';
+        // Rating </input> element
+        const rating = document.createElement('input');
+        rating.className = 'star';
         // SEO
         rating.setAttribute('itemprop', 'aggregateRating');
         rating.setAttribute('itemscope', '');
         rating.setAttribute('itemtype', 'http://schema.org/AggregateRating');
 
-        rating.textContent = `${item.rating} stars`;
+        // Set attributes for the rating input
+        rating.type = 'range';
+        rating.step = 0.1;
+        rating.min = 1;
+        rating.max = 5;
+        rating.value = Math.min(Math.max(item.rating, 1), 5); // Ensure rating is between 1 and 5
+        // Make rating immutable
+        rating.setAttribute('readonly', '');
+        rating.disabled = true;
 
         // Review </span> element
         const reviewCount = document.createElement('span');
         reviewCount.className = 'review-count';
-        reviewCount.textContent = `${item.numReviews} reviews`;
+        reviewCount.textContent = `(${item.numReviews})`;
         reviewCount.setAttribute('itemprop', 'reviewCount');
 
         // Append elements to the user reviews section

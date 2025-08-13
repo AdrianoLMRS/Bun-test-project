@@ -18,7 +18,7 @@ export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryC
 
         // Fetch the HTML content of the page
         const response = await axios.get(url, {
-            headers: { 'User-Agent': userAgent }
+            headers: { 'User-Agent': userAgent, 'referer': 'https://google.com' }
         });
 
         // Parse the HTML content using JSDOM
