@@ -30,14 +30,19 @@
         </section>
     </body>
     <aside>
-        <dialog class="prompt-dialog" id="prompt-dialog">
-            <p><span class="error" id="dialog-error"></span><br>Do you want to use sample data?</p>
-            <form method="dialog" style="display: contents;">
-                <button formmethod="dialog" type="submit"
-                    id="prompt-btn-yes"
-                    class="prompt-btn prompt-btn-yes">Yes</button>
-                <button formmethod="dialog" type="submit" class="prompt-btn prompt-btn-no">No</button>
-            </form>
+        <dialog class="prompt-dialog" id="prompt-dialog" onclick="event.target === this && this.close()">
+            <div>
+                <p><b>Error:</b> <span class="error" id="dialog-error"></span><br>Do you want to use sample data?</p>
+                <form method="dialog" style="display: contents;">
+                    <div class="btn-container">
+                        <button formmethod="dialog" type="submit"
+                            id="prompt-btn-yes"
+                            class="prompt-btn prompt-btn-yes">Yes</button>
+                        <button formmethod="dialog" type="submit" class="prompt-btn prompt-btn-no">No</button>
+                        <button autofocus formmethod="dialog" type="submit" class="dialog-x">❌</button>
+                    </div>
+                </form>
+            </div>
         </dialog>
     </aside>
     <script type="module" src="./src/main.js"></script>
