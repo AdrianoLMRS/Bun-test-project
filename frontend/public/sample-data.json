@@ -1,0 +1,104 @@
+[
+	{
+		"title": "Full Stack Web Development: A Comprehensive, Hands-On Guide to Building Modern Websites and Applications (IBPA Gold Award Winner) (Rheinwerk Computing)",
+		"rating": 4.7,
+		"numReviews": "35",
+		"imageUrl": "https://m.media-amazon.com/images/I/7127pava55L._AC_UL320_.jpg"
+	},
+	{
+		"title": "Ultimate Full-Stack Web Development with MERN: Design, Build, Test and Deploy Production-Grade Web Applications with MongoDB, Express, React and NodeJS (English Edition)",
+		"rating": 4.2,
+		"numReviews": "23",
+		"imageUrl": "https://m.media-amazon.com/images/I/81S8bz88s-L._AC_UL320_.jpg"
+	},
+	{
+		"title": "Interactive Web Development with Three.js and A-Frame: Create Captivating Visualizations and Projects in Immersive Creative Technology for 3D, WebAR, ... Using Three.js and A-Frame (English Edition)",
+		"rating": 5,
+		"numReviews": "6",
+		"imageUrl": "https://m.media-amazon.com/images/I/81C70kK2DKL._AC_UL320_.jpg"
+	},
+	{
+		"title": "Modern Web Development with Go: Build real-world, fast, efficient and scalable web server apps using Go programming language (English Edition)",
+		"rating": 4.3,
+		"numReviews": "21",
+		"imageUrl": "https://m.media-amazon.com/images/I/71trhLv66mL._AC_UL320_.jpg"
+	},
+	{
+		"title": "HTML and CSS: Design and Build Websites",
+		"rating": 4.7,
+		"numReviews": "4,771",
+		"imageUrl": "https://m.media-amazon.com/images/I/613ZTDcDsiL._AC_UL320_.jpg"
+	},
+	{
+		"title": "Full Stack Web Development: A Comprehensive, Hands-On Guide to Building Modern Websites and Applications (IBPA Gold Award Winner) (Rheinwerk Computing)",
+		"rating": 4.7,
+		"numReviews": "35",
+		"imageUrl": "https://m.media-amazon.com/images/I/7127pava55L._AC_UL320_.jpg"
+	},
+	{
+		"title": "Web Design with HTML, CSS, JavaScript and jQuery Set",
+		"rating": 4.7,
+		"numReviews": "4,639",
+		"imageUrl": "https://m.media-amazon.com/images/I/811a1DHT8OL._AC_UL320_.jpg"
+	},
+	{
+		"title": "C# 13 and .NET 9 – Modern Cross-Platform Development Fundamentals: Start building websites and services with ASP.NET Core 9, Blazor, and EF Core 9",
+		"rating": 4.6,
+		"numReviews": "93",
+		"imageUrl": "https://m.media-amazon.com/images/I/61AeNkc6rwL._AC_UL640_QL65_.jpg"
+	},
+	{
+		"title": "The Complete Developer: Master the Full Stack with TypeScript, React, Next.js, MongoDB, and Docker",
+		"rating": 3.7,
+		"numReviews": "21",
+		"imageUrl": "https://m.media-amazon.com/images/I/7163IqH4nkL._AC_UL320_.jpg"
+	},
+	{
+		"title": "Building Websites All-in-One For Dummies",
+		"rating": 4.3,
+		"numReviews": "507",
+		"imageUrl": "https://m.media-amazon.com/images/I/717vmakyQEL._AC_UL320_.jpg"
+	},
+	{
+		"title": "Agile Web Development with Rails 8",
+		"rating": 5,
+		"numReviews": "1",
+		"imageUrl": "https://m.media-amazon.com/images/I/71V5DMhxhIL._AC_UL320_.jpg"
+	},
+	{
+		"title": "WebGPU Programming Guide: Interactive Graphics & Compute Programming with WebGPU & WGSL",
+		"rating": 3.2,
+		"numReviews": "3",
+		"imageUrl": "https://m.media-amazon.com/images/I/61qmt5MIePL._AC_UL320_.jpg"
+	},
+	{
+		"title": "Learning Angular: A practical guide to building web applications with modern Angular",
+		"rating": 4.8,
+		"numReviews": "30",
+		"imageUrl": "https://m.media-amazon.com/images/I/71wlgd2ShsL._AC_UL320_.jpg"
+	},
+	{
+		"title": "WebGPU Development Cookbook",
+		"rating": 5,
+		"numReviews": "1",
+		"imageUrl": "https://m.media-amazon.com/images/I/617L7wpF9cL._AC_UL320_.jpg"
+	},
+	{
+		"title": "Responsive Web Design with HTML5 and CSS: Build future-proof responsive websites using the latest HTML5 and CSS techniques",
+		"rating": 4.6,
+		"numReviews": "171",
+		"imageUrl": "https://m.media-amazon.com/images/I/81n6iWkrsFL._AC_UL320_.jpg"
+	},
+	{
+		"title": "Real-World Web Development with .NET 9: Build websites and services using mature and proven ASP.NET Core MVC, Web API, and Umbraco CMS",
+		"rating": 4.7,
+		"numReviews": "29",
+		"imageUrl": "https://m.media-amazon.com/images/I/619MucmSR3L._AC_UL320_.jpg"
+	},
+	{
+		"title": "Web Development and Design for Beginners: Learn and Apply the Basic of HTML5, CSS3, JavaScript, jQuery, Bootstrap, DOM, UNIX Command, and GitHub - Tools for Building Responsive Websites",
+		"rating": 4.2,
+		"numReviews": "59",
+		"imageUrl": "https://m.media-amazon.com/images/I/71nDZYntR6L._AC_UL320_.jpg"
+	}
+]

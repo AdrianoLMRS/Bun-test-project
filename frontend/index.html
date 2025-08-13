@@ -29,6 +29,17 @@
             </div>
         </section>
     </body>
-    <script src="./src/main.js"></script>
+    <aside>
+        <dialog class="prompt-dialog" id="prompt-dialog">
+            <p><span class="error" id="dialog-error"></span><br>Do you want to use sample data?</p>
+            <form method="dialog" style="display: contents;">
+                <button formmethod="dialog" type="submit"
+                    id="prompt-btn-yes"
+                    class="prompt-btn prompt-btn-yes">Yes</button>
+                <button formmethod="dialog" type="submit" class="prompt-btn prompt-btn-no">No</button>
+            </form>
+        </dialog>
+    </aside>
+    <script type="module" src="./src/main.js"></script>
     <noscript>Enable JavaScript to use this website</noscript>
 </html>

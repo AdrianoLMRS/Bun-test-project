@@ -1,5 +1,9 @@
 const form = document.getElementById('scrape-amazon-form');
 
+const promptDialog = document.getElementById('prompt-dialog')
+const dialogSpan = document.getElementById('dialog-error')
+const dialogYesBtn = document.getElementById('prompt-btn-yes')
+
 form.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent the default form submission
 
@@ -15,9 +19,21 @@ form.addEventListener('submit', (event) => {
     })
     .catch((error) => {
         console.error('Error:', error);
-        // Handle error
+        // If error, show this dialog
+        promptDialog.showModal();
+        dialogSpan.textContent = error.message || 'Failed to fetch data';
+        
+        dialogYesBtn.onclick = () => fetchSampleData();
     });
 });
+
+// Function to fetch sample data and render it
+function fetchSampleData() {
+    fetch('/sample-data.json')
+        .then(response => response.json())
+        .then(sampleData => renderResults(sampleData) )
+        .catch(error => console.error('Error fetching sample data:', error));
+};
 
 function renderResults(results) {
     const resultsContainer = document.getElementById('results-container');
