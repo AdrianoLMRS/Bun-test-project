@@ -8,21 +8,27 @@
         <title>Amazon Search Scraper</title>
     </head>
     <body>
-        <header>
+        <header class="header">
             <h1>Amazon Scraper</h1>
             <p id="results-summary" aria-live="polite"></p>
         </header>
         <hr>
-        <section aria-labbelledby="form-section-header">
+        <section class="section-form" aria-labbelledby="form-section-header">
             <h2 id="form-section-header">Search for a keyword to begin to scrape!</h2>
-            <form id="scrape-amazon-form" action="http://localhost:%VITE_PORT%/api/scrape" method="get" target="resultsFrame">
-                <input name="keyword" type="text" placeholder="Keyword"
-                    required autofocus autocomplete="on" />
-                <button name="search-button" form="scrape-amazon-form"
-                    type="submit">Search</button>
+            <form id="scrape-amazon-form" action="http://localhost:%VITE_PORT%/api/scrape" method="get">
+                <label for="keyword">Keyword:</label>
+                <input class="input-keyword" aria-describedby="keyword-error"
+                    id="input-keyword" name="keyword" placeholder="Keyword"
+                    autofocus autocomplete="on" autocapitalize="none"
+                    required aria-required="true"
+                    type="text" inputmode="search"
+                    minlength="2" maxlength="100"
+                    pattern="[A-Za-zÀ-ÖØ-öø-ÿ0-9\s._-]+" />
+                <button id="search-button" name="search-button" form="scrape-amazon-form"
+                    type="submit" disabled>Search</button>
             </form>
         </section>
-        <section aria-labelledby="results-header" id="results">
+        <section class="section-results" aria-labelledby="results-header" id="results">
             <h2 id="results-header">Results</h2>
             <div id="results-container" aria-live="polite">
                 <p id="results">No results yet. Please enter a keyword and click "Search".</p>
