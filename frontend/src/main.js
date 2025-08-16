@@ -1,5 +1,6 @@
 const form = document.getElementById('scrape-amazon-form');
 
+// Prompt dialog elements
 const promptDialog = document.getElementById('prompt-dialog')
 const dialogSpan = document.getElementById('dialog-error')
 const dialogYesBtn = document.getElementById('prompt-btn-yes')

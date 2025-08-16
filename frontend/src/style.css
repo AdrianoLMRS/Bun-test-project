@@ -1,4 +1,6 @@
-@import url(./star.css);
+@import url(./styles/form.css);
+@import url(./styles/prompt-dialog.css);
+@import url(./styles/star.css);
 
 *,
 *::after,
@@ -12,74 +14,32 @@
 :root {
     font-size: 16px;
     --prompt-bg: #f0f0f0;
-    --font-color: #090909;
+    --primary-color: #090909;
+    --secondary-color: #F3EFE0;
+    --third-color: #7FEFBD;
+    --fourth-color: #CBA135;
 }
 
-.prompt-dialog {
-    margin: auto;
-    border: none;
-    font-size: 1.3rem;
-    border-radius: 8px;
-    padding: 0;
-    max-width: 500px;
+body {
+    background-color: var(--prompt-bg);
+    color: var(--primary-color);
+    line-height: 1.6;
+}
+
+body > * { margin-inline: auto; }
+
+.sr-only {
+	border: 0 !important;
+	clip-path: inset(50%) !important; /* 2 */
+	height: 1px !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	width: 1px !important;
+	white-space: nowrap !important; /* 3 */
+}
+
+.header {
     text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    --_negative: #f44336;
-}
-
-/* Need this </div> in case user clicks outside modal */
-.prompt-dialog > div {
-    width: 100%;
-    height: 100%;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-}
-
-.prompt-dialog .error {
-    color: var(--_negative);
-    text-decoration: underline;
-}
-
-.prompt-dialog .prompt-btn {
-    font-size: inherit;
-    color: var(--font-color);
-    padding: 0.7em 1.7em;
-    border-radius: 0.5em;
-    cursor: pointer;
-    border: none;
-    background-color: var(--_bg, #fff);
-    transition: all .3s;
-
-    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
-
-    transform: translateZ(0);
-    backface-visibility: hidden;
-}
-
-.prompt-dialog .prompt-btn:hover, .prompt-dialog .prompt-btn:focus { transform: translateY(-2px); }
-  
-.prompt-dialog .prompt-btn:active { box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff; }
-  
-
-.prompt-dialog .btn-container {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.prompt-dialog .prompt-btn-yes { --_bg: #4CAF50;}
-
-.prompt-dialog .prompt-btn-no { --_bg: var(--_negative); }
-
-.prompt-dialog .dialog-x {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: inherit;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    padding: 20px;
 }
