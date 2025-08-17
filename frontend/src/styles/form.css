@@ -1,16 +1,19 @@
 form {
-    max-width: 300px;
-    margin-inline: auto;
+    width: 100%;
     display: flex;
+    justify-content: center;
+    padding: 10px 10px !important;
     column-gap: 20px;
+    row-gap: 10px;
+    flex-wrap: wrap;
 }
 
 form .search-label {
-    flex: 0 0 80%;
+    width: clamp(200px, 100%, 450px);
 }
 
 form button {
-   flex: 1; 
+    width: clamp(200px, 100%, 200px);
 }
 
 .form-submit-button {
@@ -21,7 +24,6 @@ form button {
     font-family: inherit;
     color: #717171;
     font-weight: 600;
-    width: 40%;
     background: #313131;
     border: 1px solid #414141;
     padding: 12px 16px;

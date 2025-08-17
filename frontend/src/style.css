@@ -43,3 +43,10 @@ body > * { margin-inline: auto; }
     text-align: center;
     padding: 20px;
 }
+
+section {
+    margin: 20px 0;
+}
+
+.section-form { text-align: center; }
+.section-form > * { padding: 10px 0; }
