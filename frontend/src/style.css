@@ -29,6 +29,11 @@ body {
 
 body > * { margin-inline: auto; }
 
+img {
+    display: block;
+    width: 100%;
+}
+
 .sr-only {
 	border: 0 !important;
 	clip-path: inset(50%) !important; /* 2 */
@@ -45,9 +50,9 @@ body > * { margin-inline: auto; }
     padding: 20px;
 }
 
-section {
-    margin: 20px 0;
-}
+section { margin: 20px 0; }
 
 .section-form { text-align: center; }
 .section-form > * { padding: 10px 0; }
+
+.section-results { text-align: center; margin-top: 50px; }

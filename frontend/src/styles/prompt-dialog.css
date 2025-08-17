@@ -59,6 +59,7 @@
 
 .prompt-dialog .dialog-x {
   position: absolute;
+  width: auto;
   top: 10px;
   right: 10px;
   font-size: inherit;

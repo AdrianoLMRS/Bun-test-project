@@ -4,7 +4,8 @@
 */
 
 input[type="range"].star {
-  --s: 100px; /* control the size*/
+  --s: 100px; /* control the size */
+  pointer-events: none;
   
   --_c: #7b7b7b 50%,#fff220 0;
   height: var(--s);
