@@ -1,0 +1,101 @@
+#results-container {
+    padding: 1rem;
+    --card-bg: var(--prompt-bg, #fff);
+    --card-shadow: 0 4px 15px rgba(0,0,0,.12);
+    --card-shadow-hover: 0 6px 18px rgba(0,0,0,.18);
+    --radius: 12px;
+    --gap: 1.5rem;
+}
+  
+#results-container ol {
+    list-style: none;
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+  
+#results-container li {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    transition: transform .2s ease, box-shadow .2s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+  
+#results-container li:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+}
+  
+#results-container article {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+  
+#results-container header {
+    padding: 1rem;
+    flex-grow: 0;
+}
+  
+#results-container h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #222;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp:  3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+  
+#results-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+  
+#results-container section {
+    border-top: 1px solid #ccc;
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    align-items: center;
+    gap: .5rem;
+    padding: 0 10px;
+    height: 100%;
+}
+  
+#results-container section > * {
+    flex: 1;
+    min-width: 0;
+}
+  
+#results-container h4 {
+    font-size: .9rem;
+    color: #666;
+    margin: 0;
+    flex: 2;
+}
+  
+#results-container .star {
+    --s: 15px !important;
+    flex: 1;
+}
+  
+.review-count {
+    font-size: .85rem;
+    color: #444;
+    flex: 0;
+    white-space: nowrap;
+}
+  
+@media (prefers-reduced-motion: reduce) {
+    #results-container li { transition:none }
+    #results-container li:hover { transform:none }
+}
+  
