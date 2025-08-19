@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { JSDOM } from 'jsdom'
 
-import { getRamdomUserAgent, selectors } from './utils'
+import { generateRandomUserAgent, selectors } from './utils'
 import type { ProductType } from './types';
 
 // Function to fetch results from Amazon based on the search keyword
@@ -15,7 +15,8 @@ export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryC
         const url = `https://www.amazon.com/s?k=${encodeURIComponent(keyword)}`;
         console.log(`Fetching URL: ${url}`);
 
-        const userAgent = getRamdomUserAgent();
+        const userAgent = generateRandomUserAgent();
+        console.log(`Using User-Agent: ${userAgent}`);
 
         // Fetch the HTML content of the page
         const response = await axios.get(url, {

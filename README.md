@@ -203,7 +203,7 @@ If the backend fails to fetch data, the frontend can use sample data located in 
 
 ## Known Issues
 
-- [503 error](https://github.com/AdrianoLMRS/Bun-test-project/issues/2), need better User-Agents to avoid detection (will be fixed).
+- [503 error](https://github.com/AdrianoLMRS/Bun-test-project/issues/2), need better User-Agents to avoid detection (Fixed).
 - The scraper may fail if Amazon changes its HTML structure.
 - The backend does not currently handle advanced error cases like CAPTCHA challenges.
 
