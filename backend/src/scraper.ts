@@ -13,6 +13,7 @@ export async function scrapeAmazonSearch(keyword: string, maxRetries = 3, retryC
         }
 
         const url = `https://www.amazon.com/s?k=${encodeURIComponent(keyword)}`;
+        console.log(`Fetching URL: ${url}`);
 
         const userAgent = getRamdomUserAgent();
 

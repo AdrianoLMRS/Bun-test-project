@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: ./frontend
+    image: frontend:latest
+    restart: always
+    ports:
+      - 8080:80
+  api:
+    build:
+      context: ./backend
+    image: backend:latest
+    restart: always
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"

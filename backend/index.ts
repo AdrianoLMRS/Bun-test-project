@@ -15,6 +15,7 @@ app.use((req, res, next) => {
 
 app.get('/api/scrape', async (req, res) => {
     const { keyword } = req.query
+    // TODO: Server-side validation form validation
     if (!keyword) return res.status(400).json({ error: 'Keyword is required' })
     try {
         const data = await scrapeAmazonSearch(`${keyword}`)
@@ -24,6 +25,7 @@ app.get('/api/scrape', async (req, res) => {
         console.error('Error fetching data:', err);
         const errorMessage = err instanceof Error ? err.message : 'Failed to fetch data';
         res.status(500).json({ error: errorMessage });
+        // TODO: Handle specific error cases (e.g., network issues, parsing errors)
     };
 });
 
