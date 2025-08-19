@@ -81,7 +81,7 @@ Bun-test-project/
 
 ## Running the Project
 
-### 1. Using Docker Compose
+<details open><summary><h3>&emsp;1. Using Docker Compose</h3></summary>
 
 1. Ensure Docker and Docker Compose are installed on your system.
 2. Navigate to the project root directory.
@@ -94,9 +94,11 @@ Bun-test-project/
 4. Access the frontend at [http://localhost:8080](http://localhost:8080).
 5. The backend API will be available at [http://localhost:3000/api/scrape](http://localhost:3000/api/scrape).
 
+</details>
+
 ---
 
-### 2. Running Manually
+<details><summary><h3>&emsp;2. Running Manually</h3></summary>
 
 #### Backend
 
@@ -156,6 +158,8 @@ Bun-test-project/
 
 - `VITE_PORT`: Port for the HTML `<form>` (Should be same as backend).
 
+</details>
+
 ---
 
 ## API Endpoints
@@ -199,7 +203,7 @@ If the backend fails to fetch data, the frontend can use sample data located in 
 
 ## Known Issues
 
-- *503 error*, need better User-Agents to avoid detection (will be fixed).
+- [503 error](https://github.com/AdrianoLMRS/Bun-test-project/issues/2), need better User-Agents to avoid detection (will be fixed).
 - The scraper may fail if Amazon changes its HTML structure.
 - The backend does not currently handle advanced error cases like CAPTCHA challenges.
 
